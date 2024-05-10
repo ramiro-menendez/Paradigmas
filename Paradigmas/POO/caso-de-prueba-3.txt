@@ -1,0 +1,50 @@
+| listones cable embalaje sierraChica sierraGrande
+pedro alfonso javier camion volkswagen armadores
+lamparaMesa lamparaPie
+ordenes plan |
+
+"1- Crear los siguientes recursos"
+listones := MateriaPrima new: 'Listones'.
+cable := MateriaPrima new: 'Cable'.
+embalaje := MateriaPrima new: 'Embalaje'.
+sierraChica := Maquinaria new: 'Sierra Chica'.
+sierraGrande := Maquinaria new: 'Sierra Grande'.
+alfonso := Operario new: 'Alfonso'.
+javier := Operario new: 'Javier'.
+pedro := Operario new: 'Pedro'.
+camion := Vehiculo new: 'Scania-ARG999'.
+volkswagen := Vehiculo new: 'Volkswagen-UTN000'.
+armadores := GrupoRecurso new: 'Armadores'.
+armadores agregarRecurso: alfonso.
+armadores agregarRecurso: pedro.
+armadores agregarRecurso: javier.
+
+"2- Definir los productos"
+lamparaMesa := Producto new: 'Lampara de Mesa'.
+lamparaPie := Producto new: 'Lampara de Pie'.
+
+"3- Configurar las actividades necesarias para la fabricación de cada producto"
+lamparaMesa 
+agregarActividad: (Actividad new: 'Preparación' recurso: listones duracionHoras: 1);
+agregarActividad: (Actividad new: 'Corte' recurso: sierraGrande duracionHoras: 2);
+agregarActividad: (Actividad new: 'Armado' recurso: armadores duracionHoras: 4);
+agregarActividad: (Actividad new: 'ensamblado' recurso: cable duracionHoras: 1);
+agregarActividad: (Actividad new: 'embalaje' recurso: embalaje  duracionHoras: 1);
+agregarActividad: (Actividad new: 'Envío' recurso: volkswagen duracionHoras: 2).
+lamparaPie
+agregarActividad: (Actividad new: 'Preparación' recurso: listones duracionHoras: 1);
+agregarActividad: (Actividad new: 'Corte' recurso: sierraChica duracionHoras: 2);
+agregarActividad: (Actividad new: 'Armado' recurso: armadores duracionHoras: 4);
+agregarActividad: (Actividad new: 'ensamblado' recurso: cable duracionHoras: 1);
+agregarActividad: (Actividad new: 'embalaje' recurso: embalaje  duracionHoras: 1);
+agregarActividad: (Actividad new: 'Envío' recurso: volkswagen duracionHoras: 2).
+
+"4- Crear los órdenes de producción"
+ordenes := OrderedCollection new.
+ordenes add: (OrdenDeProduccion new: lamparaMesa  codigo: $A).
+ordenes add: (OrdenDeProduccion new: lamparaPie  codigo: $B).
+
+"5 y 6- Planificar e imprimir"
+plan := PlanDeProduccion new.
+plan planificar: ordenes.
+plan imprimir.

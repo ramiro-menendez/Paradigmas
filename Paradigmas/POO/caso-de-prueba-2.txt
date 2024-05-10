@@ -1,0 +1,46 @@
+| tablasLijadas tablasPintadas patasTorneadas sierraChica sierraGrande
+ramiro martina camion volkswagen armadores
+mesaMidCentury mesaMinimalista
+ordenes plan |
+
+"1- Crear los siguientes recursos"
+tablasLijadas := MateriaPrima new: 'Tablas Lijadas'.
+tablasPintadas := MateriaPrima new: 'Tablas Pintadas'.
+patasTorneadas := MateriaPrima new: 'Patas Torneadas'.
+sierraChica := Maquinaria new: 'Sierra Chica'.
+sierraGrande := Maquinaria new: 'Sierra Grande'.
+ramiro := Operario new: 'Ramiro'.
+martina := Operario new: 'Martina'.
+camion := Vehiculo new: 'Scania-ARG999'.
+volkswagen := Vehiculo new: 'Volkswagen-UTN000'.
+armadores := GrupoRecurso new: 'Armadores'.
+armadores agregarRecurso: ramiro.
+armadores agregarRecurso: martina.
+
+"2- Definir los productos"
+mesaMidCentury := Producto new: 'Mesa de Comedor mid century'.
+mesaMinimalista := Producto new: 'Mesa ratona minimalista'.
+
+"3- Configurar las actividades necesarias para la fabricación de cada producto"
+mesaMidCentury 
+agregarActividad: (Actividad new: 'Preparación' recurso: tablasLijadas duracionHoras: 3);
+agregarActividad: (Actividad new: 'Corte' recurso: sierraGrande duracionHoras: 5);
+agregarActividad: (Actividad new: 'Armado' recurso: armadores duracionHoras: 6);
+agregarActividad: (Actividad new: 'Armado2' recurso: patasTorneadas duracionHoras: 1);
+agregarActividad: (Actividad new: 'Envío' recurso: camion duracionHoras: 2).
+mesaMinimalista
+agregarActividad: (Actividad new: 'Preparación' recurso: tablasPintadas duracionHoras: 2);
+agregarActividad: (Actividad new: 'Corte' recurso: sierraChica duracionHoras: 4);
+agregarActividad: (Actividad new: 'Armado' recurso: armadores duracionHoras: 4);
+agregarActividad: (Actividad new: 'Armado2' recurso: patasTorneadas duracionHoras: 1);
+agregarActividad: (Actividad new: 'Envío' recurso: volkswagen duracionHoras: 1).
+
+"4- Crear los órdenes de producción"
+ordenes := OrderedCollection new.
+ordenes add: (OrdenDeProduccion new: mesaMidCentury codigo: $A).
+ordenes add: (OrdenDeProduccion new: mesaMinimalista codigo: $B).
+
+"5 y 6- Planificar e imprimir"
+plan := PlanDeProduccion new.
+plan planificar: ordenes.
+plan imprimir.
