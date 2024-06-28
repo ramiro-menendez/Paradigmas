@@ -1,0 +1,12 @@
+#lang racket
+
+(define distancia
+  (lambda (p1 p2)
+    (sqrt
+     (+
+      (expt (- (cdr p1) (car p1)) 2)
+      (expt (- (cdr p2) (car p2)) 2)
+      )
+     )
+    )
+  )

@@ -1,0 +1,36 @@
+#lang racket
+
+;Ejercicio1
+
+(define factorial
+  (lambda(n)
+    (if (= n 0) 1
+        (* n (factorial (- n 1))))))
+
+;Ejercicio2
+
+;Ejercicio3
+
+(define maximo
+  (lambda(x)
+    (cond ((null? x) (error "maximo: no admite lista vacia"))
+          ((null? (cdr x)) (car x))
+          (else
+            (let [
+                  (cabeza (car x))            ;define la cabeza como el 'Content of the Address part of the Register' de la lista.
+                  (maxcola (maximo (cdr x)))  ;define el maxcola como el maximo del 'Content of the Decrement part of the Register' de la lista.
+                  ]
+
+                  
+
+
+              ))))
+    
+
+;Ejercicio4
+
+;Ejercicio5
+
+;Ejercicio6
+
+;Ejercicio7
