@@ -30,8 +30,9 @@
     (or
      (null? (cdr lista-puntos))
      (and
-      (< (distancia p (car lista-puntos))
-         (distancia p (cadr lista-puntos)))
+      ;(< (distancia p (car lista-puntos))
+       ;  (distancia p (cadr lista-puntos)))
+      ((mas-cercano p) (cadr lista-puntos) (car lista-puntos))
       (ordenados? p (cdr lista-puntos))
       )
      )
