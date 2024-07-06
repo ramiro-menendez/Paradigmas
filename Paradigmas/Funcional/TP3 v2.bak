@@ -1,0 +1,4 @@
+#lang racket
+
+(define horarios-complejos
+  '((8 9)(9 10)(10 11)(11 12)(16 17)(17 18)()()()())

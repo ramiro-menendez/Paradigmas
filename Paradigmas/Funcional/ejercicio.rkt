@@ -35,9 +35,7 @@
           ((null? (cdr x)) 1)
           (else
            (+ 1 (longitud (cdr x)))
-           )
-    )
- ))
+           ))))
 
 ;4 - Sumar los elementos de una lista.
 
@@ -46,19 +44,30 @@
     (cond ((null? x) (error "Error: la lista no tiene elementos"))
           ((null? (cdr x)) (car x))
           (else
-           (+ (car x) (sumatoria (cdr x)))
-           )
-      )
-    )
- )
+           (+ (car x) (sumatoria (cdr x)))))))
 
 ;5 - Determinar si un elemento es miembro de una lista
 
 (define miembro?
-  (lambda(n x)
-    (if (null? x) #f
-          (if(equal? n (car x)) #t
-                                (miembro? n (cdr x))))))
+  (lambda(n lista)
+    (if (null? lista)
+        #f    
+        (if(= n (car lista)) 
+           #t
+           (miembro? n (cdr lista))))))
+
+;(no esta vacia) Y ((elem esta en el primero) Ó (esta en el resto))
+
+
+
+
+
+
+
+
+
+
+
 
       ;También se puede pensar en forma matemática, con booleanos
       ; ¬(lista vacía) ^ (está en la cabeza ∨ está en la cola)

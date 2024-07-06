@@ -1,0 +1,14 @@
+#lang scheme
+
+(define agenda-semanal
+  '((lunes ("Francisco Perez" 8 8.5) ("Mariano López" 9 9.5))
+    (martes ("José Álvarez" 10 11) ("Fernanda Martínez" 11 12))
+    (miercoles) (jueves) (viernes)))
+
+(define buscar-horario
+  (lambda (agenda tipo dia)
+    (
+     
+     )
+    )
+  )
